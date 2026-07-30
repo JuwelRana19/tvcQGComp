@@ -219,3 +219,9 @@ an RDS file at
 
 This package is distributed from GitHub. The public API is focused on
 time-varying quantile g-computation workflows with survival outcomes.
+
+## Development and Review
+
+The package source code was developed and manually reviewed by the
+authors. Additional code checks and refactoring support were performed
+using Cursor and OpenAI Codex.
