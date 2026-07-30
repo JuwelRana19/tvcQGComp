@@ -68,7 +68,7 @@ public API.
 
 ## Reference Paper
 
-Rana, J., Keil, A. P., Chen, H., Chen, C., Hatzopoulou, M., Zalzal, J., Benmarhnia, T., & Kaufman, J. S. (2026). Joint causal effects of time-varying traffic-related air pollution mixtures on nonaccidental mortality and environmental justice implications: A population-based cohort study in Toronto, Canada [Under Review].
+>Rana, J., Keil, A. P., Chen, H., Chen, C., Hatzopoulou, M., Zalzal, J., Benmarhnia, T., & Kaufman, J. S. (2026). *Joint causal effects of time-varying traffic-related air pollution mixtures on nonaccidental mortality and environmental justice implications: A population-based cohort study in Toronto, Canada* [Under Review].
 
 ## Intended Scope
 
