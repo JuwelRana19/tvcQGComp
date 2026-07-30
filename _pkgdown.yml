@@ -1,0 +1,68 @@
+title: tvcQGComp
+url: https://JuwelRana19.github.io/tvcQGComp/
+
+template:
+  bootstrap: 5
+  bootswatch: flatly
+  bslib:
+    primary: "#005f73"
+    link-color: "#0a6f75"
+
+navbar:
+  structure:
+    left: [intro, reference, articles, news]
+    right: [search]
+  components:
+    intro:
+      text: Get started
+      href: articles/tvcQGComp.html
+    news:
+      text: Changelog
+      href: news/index.html
+
+home:
+  title: Time-Varying Quantile G-Computation (tvcQGcomp)
+  description: >
+    G-computation for time-varying mixture exposures using quantile-based
+    intervention levels.
+  sidebar:
+    html: pkgdown/sidebar.html
+
+reference:
+  - title: Configure and validate
+    desc: Define the longitudinal data structure and quantized interventions.
+    contents:
+      - make_tvcqgcomp_config
+      - validate_tvcqgcomp_data
+      - generate_intervention_scenarios
+      - make_q_scenarios
+      - sim_data
+
+  - title: Estimate effects
+    desc: Fit the main survival analysis and obtain bootstrap uncertainty.
+    contents:
+      - tvcQGComp_survival
+      - tvcQGComp_survival_boot
+      - summarize_tvcqgcomp_bootstrap
+
+  - title: Summarize and plot
+    desc: Extract and visualize risk trajectories.
+    contents:
+      - as_risk_curve_df
+      - plot.tvcqgcomp_run
+      - plot_cumulative_risk_trajectory
+      - plot_survival_trajectory
+
+  - title: Diagnose models
+    desc: Check fitted runs and natural-course trajectory drift.
+    contents:
+      - diagnose_tvcqgcomp_run
+      - diagnose_tvcqgcomp_drift
+      - plot_tvcqgcomp_drift
+
+articles:
+  - title: Guides
+    navbar: Guides
+    contents:
+      - tvcQGComp
+      - bootstrap-and-diagnostics

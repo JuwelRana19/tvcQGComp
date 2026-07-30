@@ -1,0 +1,47 @@
+Package: tvcQGComp
+Type: Package
+Title: Time-Varying Quantile G-Computation (tvcQGcomp)
+Version: 0.0.0
+Authors@R: c(
+    person(given = "Juwel", family = "Rana",
+           role = c("aut", "cre"),
+           email = "juwelrana@saistbd.org"),
+    person(given = "Alexander", family = "Keil",
+           role = "aut")
+    )
+URL: https://JuwelRana19.github.io/tvcQGComp,
+    https://github.com/JuwelRana19/tvcQGComp
+BugReports: https://github.com/JuwelRana19/tvcQGComp/issues
+Description: G-computation for time-varying mixture exposures using
+    quantile-based intervention levels. This approach estimates marginal
+    effects corresponding to the expected change in the outcome given a joint
+    intervention on all quantized time-varying mixture exposures across all
+    time points. The package supports Monte Carlo skeleton generation,
+    automatic lag-history creation, natural course prediction, static
+    intervention simulation, pooled person-time or final-risk meta models, and
+    cluster bootstrap confidence intervals. Works with survival outcomes.
+    Reference: Juwel Rana, Alexander P. Keil, Hong Chen, Chen Chen,
+    Marianne Hatzopoulou, Jad Zalzal, Tarik Benmarhnia, and Jay S. Kaufman.
+    Joint Causal Effects of Time-Varying Traffic-Related Air Pollution
+    Mixtures on Nonaccidental Mortality and Environmental Justice
+    Implications: A Population-Based Cohort Study in Toronto, Canada.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Depends: R (>= 4.2.0)
+Imports: data.table, nnet, MASS, qgcomp, speedglm, future,
+        future.apply, stats, utils
+Suggests:
+    covr,
+    ggplot2,
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Config/Needs/website: r-lib/pkgdown
+VignetteBuilder: knitr
+NeedsCompilation: no
+Author: Juwel Rana [aut, cre],
+  Alexander Keil [aut]
+Maintainer: Juwel Rana <juwelrana@saistbd.org>
+Config/roxygen2/version: 8.0.0

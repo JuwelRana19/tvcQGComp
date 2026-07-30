@@ -1,0 +1,16 @@
+bibentry(
+  bibtype = "Unpublished",
+  title = "Joint Causal Effects of Time-Varying Traffic-Related Air Pollution Mixtures on Nonaccidental Mortality and Environmental Justice Implications: A Population-Based Cohort Study in Toronto, Canada",
+  author = c(
+    person("Juwel", "Rana"),
+    person("Alexander P.", "Keil"),
+    person("Hong", "Chen"),
+    person("Chen", "Chen"),
+    person("Marianne", "Hatzopoulou"),
+    person("Jad", "Zalzal"),
+    person("Tarik", "Benmarhnia"),
+    person("Jay S.", "Kaufman")
+  ),
+  year = "2026",
+  note = "Reference manuscript for the tvcQGComp package."
+)

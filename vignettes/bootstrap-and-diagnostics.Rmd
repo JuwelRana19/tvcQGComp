@@ -1,0 +1,104 @@
+---
+title: "Bootstrap confidence intervals and diagnostics"
+author: "Juwel Rana"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Bootstrap confidence intervals and diagnostics}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  eval = FALSE
+)
+library(tvcQGComp)
+```
+
+## Bootstrap uncertainty
+
+Use `tvcQGComp_survival_boot()` after finalizing the same `data`, `config`, and
+intervention scenarios used for the point estimate. Resampling is performed at
+the subject level to preserve each subject's longitudinal history.
+
+```{r bootstrap}
+if (FALSE) {
+boot <- tvcQGComp_survival_boot(
+  data = dat,
+  config = cfg,
+  n_boot = 500,
+  mc_size = 10000,
+  intervention_scenarios = scenarios,
+  seed = 1234,
+  parallel = TRUE,
+  n_workers = 4,
+  batch_size = 4,
+  checkpoint_file = "bootstrap_checkpoint.rds",
+  resume_from_checkpoint = TRUE,
+  verbose = TRUE,
+  stop_on_error = FALSE
+)
+
+boot_summary <- summarize_tvcqgcomp_bootstrap(boot)
+boot_summary
+}
+```
+
+Use a small number of replicates only to test the pipeline. The final analysis
+should use enough successful replicates to estimate percentile limits with
+adequate stability. Report the requested number, successful number, random
+seed, Monte Carlo size, and interval method.
+
+Checkpointing is particularly useful for long analyses. Store the checkpoint
+outside the package source directory when building public releases.
+
+## Run-level checks
+
+```{r run-diagnostics}
+if (FALSE) {
+run_checks <- diagnose_tvcqgcomp_run(fit)
+run_checks
+}
+```
+
+Review warnings, missing outputs, scenario completeness, and numerical
+irregularities before interpreting the effect estimates.
+
+## Natural-course drift
+
+When the analysis includes a simulated natural course, compare its
+time-varying covariate trajectories with the observed data.
+
+```{r drift}
+if (FALSE) {
+drift <- diagnose_tvcqgcomp_drift(
+  observed_data = dat,
+  run_obj = fit
+)
+
+drift$categorical_summary
+drift$continuous_summary
+
+plot_tvcqgcomp_drift(
+  drift_obj = drift,
+  continuous_stat = "mean",
+  categorical_stat = "level_proportion"
+)
+}
+```
+
+Material drift can indicate model misspecification, unsupported simulated
+histories, incorrect variable types, or unstable extrapolation. Diagnostics
+should inform model revision; they are not a substitute for prespecifying the
+causal assumptions and intervention definitions.
+
+## Suggested reporting checklist
+
+- Define the longitudinal time scale and event indicator.
+- List all mixture components and quantization levels.
+- Describe the natural-course mode and intervention scenarios.
+- State each requested second-stage meta-model target.
+- Report Monte Carlo size and bootstrap settings.
+- Summarize failed bootstrap replicates and diagnostic findings.

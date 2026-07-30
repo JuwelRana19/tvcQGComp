@@ -1,0 +1,11 @@
+*.Rcheck/
+*.tar.gz
+*.Rhistory
+*.RData
+*.Ruserdata
+src/*.o
+src/*.so
+src/*.dll
+src/*.a
+src/*.exe
+check_libs.R
