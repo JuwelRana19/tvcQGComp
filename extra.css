@@ -1,0 +1,15 @@
+.readme-dev-status {
+  display: none;
+}
+
+.page-header img.logo {
+  display: none !important;
+}
+
+.pkgdown-sidebar-section {
+  margin-bottom: 1.5rem;
+}
+
+.pkgdown-sidebar-section p {
+  margin-bottom: 0.35rem;
+}
