@@ -249,7 +249,7 @@ internally quantized exposure to each level in turn.</p>
 become labels in the result tables and plots.</p>
 </div>
 <div class="section level2">
-<h2 id="fit-the-point-estimate">Fit the point estimate<a class="anchor" aria-label="anchor" href="#fit-the-point-estimate"></a>
+<h2 id="point-estimate">Point estimate<a class="anchor" aria-label="anchor" href="#point-estimate"></a>
 </h2>
 <p>The website executes this demonstration with a deliberately small
 Monte Carlo sample so each code block can be followed by its actual
@@ -267,6 +267,12 @@ analysis; the detailed implementation uses 10,000.</p>
 <span>  verbose <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
 <span></span>
+<span><span class="va">fit</span><span class="op">$</span><span class="va">meta_effect_summary</span></span>
+<span><span class="co">#&gt;    meta_target   estimate increment</span></span>
+<span><span class="co">#&gt;         &lt;char&gt;      &lt;num&gt;     &lt;num&gt;</span></span>
+<span><span class="co">#&gt; 1:          HR 1.24550664         1</span></span>
+<span><span class="co">#&gt; 2:          RR 1.20271446         1</span></span>
+<span><span class="co">#&gt; 3:          RD 0.03814305         1</span></span>
 <span><span class="va">fit</span><span class="op">$</span><span class="va">risk_trajectory</span></span>
 <span><span class="co">#&gt;     scenario TimeInn TimeOut  mean_risk mean_risk_per_1000 mean_survival</span></span>
 <span><span class="co">#&gt;       &lt;char&gt;   &lt;int&gt;   &lt;int&gt;      &lt;num&gt;              &lt;num&gt;         &lt;num&gt;</span></span>
@@ -379,13 +385,7 @@ analysis; the detailed implementation uses 10,000.</p>
 <span><span class="co">#&gt; 51:               783.6020</span></span>
 <span><span class="co">#&gt; 52:               729.4551</span></span>
 <span><span class="co">#&gt;     mean_survival_per_1000</span></span>
-<span><span class="co">#&gt;                      &lt;num&gt;</span></span>
-<span><span class="va">fit</span><span class="op">$</span><span class="va">meta_effect_summary</span></span>
-<span><span class="co">#&gt;    meta_target   estimate increment</span></span>
-<span><span class="co">#&gt;         &lt;char&gt;      &lt;num&gt;     &lt;num&gt;</span></span>
-<span><span class="co">#&gt; 1:          HR 1.24550664         1</span></span>
-<span><span class="co">#&gt; 2:          RR 1.20271446         1</span></span>
-<span><span class="co">#&gt; 3:          RD 0.03814305         1</span></span></code></pre></div>
+<span><span class="co">#&gt;                      &lt;num&gt;</span></span></code></pre></div>
 <p>The returned object contains fitted nuisance models, simulated
 intervention data, risk summaries, natural-course outputs when
 requested, and the pooled second-stage model.</p>

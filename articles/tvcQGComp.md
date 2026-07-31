@@ -147,7 +147,7 @@ names(scenarios)
 Inspect `scenarios` before fitting. The scenario names become labels in
 the result tables and plots.
 
-## Fit the point estimate
+## Point estimate
 
 The website executes this demonstration with a deliberately small Monte
 Carlo sample so each code block can be followed by its actual output.
@@ -167,6 +167,12 @@ fit <- tvcQGComp_survival(
   verbose = FALSE
 )
 
+fit$meta_effect_summary
+#>    meta_target   estimate increment
+#>         <char>      <num>     <num>
+#> 1:          HR 1.24550664         1
+#> 2:          RR 1.20271446         1
+#> 3:          RD 0.03814305         1
 fit$risk_trajectory
 #>     scenario TimeInn TimeOut  mean_risk mean_risk_per_1000 mean_survival
 #>       <char>   <int>   <int>      <num>              <num>         <num>
@@ -280,12 +286,6 @@ fit$risk_trajectory
 #> 52:               729.4551
 #>     mean_survival_per_1000
 #>                      <num>
-fit$meta_effect_summary
-#>    meta_target   estimate increment
-#>         <char>      <num>     <num>
-#> 1:          HR 1.24550664         1
-#> 2:          RR 1.20271446         1
-#> 3:          RD 0.03814305         1
 ```
 
 The returned object contains fitted nuisance models, simulated

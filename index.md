@@ -18,8 +18,12 @@ downloads](https://img.shields.io/github/downloads/JuwelRana19/tvcQGComp/total.s
 [![Codecov](https://codecov.io/gh/JuwelRana19/tvcQGComp/branch/main/graph/badge.svg)](https://app.codecov.io/gh/JuwelRana19/tvcQGComp)
 [![CodeFactor](https://www.codefactor.io/repository/github/JuwelRana19/tvcQGComp/badge)](https://www.codefactor.io/repository/github/JuwelRana19/tvcQGComp)
 
-`tvcQGComp` provides time-varying quantile g-computation workflows,
-including:
+## Description
+
+The main purpose of the `tvcQGComp` R-Package is to estimate joint
+causal effects of time-varying exposure mixtures on survival or binary
+outcomes. `tvcQGComp` provides time-varying quantile g-computation
+workflows, including
 
 - Monte Carlo skeleton generation
 - automatic lag-history creation
