@@ -29,8 +29,6 @@ The main purpose of the `tvcQGComp` R-Package is to estimate joint causal effect
 - pooled person-time or final-risk meta models
 - cluster bootstrap confidence intervals
 
-The implementation supports survival outcomes.
-
 ## Installation
 
 Install the development version from GitHub with either `remotes` or `pak`.
@@ -47,7 +45,7 @@ pak::pak("JuwelRana19/tvcQGComp")
 
 ## Documentation
 
-The package website is generated with
+The [package website](https://juwelrana.com/tvcQGComp/) is generated with
 [pkgdown](https://pkgdown.r-lib.org/). It provides a guided introduction,
 an end-to-end analysis workflow with bootstrap and diagnostic guidance, and
 searchable help pages for the complete public API.
@@ -83,7 +81,7 @@ This release is intended for time-varying q-gcomp workflows where the main user-
 5. inspect trajectories and drift diagnostics
 
 Version 0.0.0 is limited to quantized static scenarios and HR/RR/RD
-main-effect meta-models. It does not include the development-package helpers
+main-effect meta-models. Future updates will include the development-package helpers
 for raw lookup interventions, effect-measure modification, subgroup-specific
 raw contrasts, or population-impact summaries.
 
