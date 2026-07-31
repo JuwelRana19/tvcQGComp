@@ -9,8 +9,8 @@ Define the longitudinal data structure and quantized interventions.
   [`generate_intervention_scenarios()`](https://JuwelRana19.github.io/tvcQGComp/reference/make_tvcqgcomp_config.md)
   [`validate_tvcqgcomp_data()`](https://JuwelRana19.github.io/tvcQGComp/reference/make_tvcqgcomp_config.md)
   : Create a tvcQGcomp Configuration and Quantized Scenarios
-- [`sim_data`](https://JuwelRana19.github.io/tvcQGComp/reference/sim_data.md)
-  : Simulated Longitudinal Survival Data
+- [`toy_data`](https://JuwelRana19.github.io/tvcQGComp/reference/toy_data.md)
+  : Toy Longitudinal Survival Data
 
 ## Estimate effects
 

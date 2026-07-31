@@ -42,7 +42,6 @@
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Guides</h6></li>
-    <li><a class="dropdown-item" href="articles/bootstrap-and-diagnostics.html">Bootstrap confidence intervals and diagnostics</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
@@ -94,7 +93,7 @@
 <div class="section level2">
 <h2 id="documentation">Documentation<a class="anchor" aria-label="anchor" href="#documentation"></a>
 </h2>
-<p>The package website is generated with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>. It provides a guided introduction, bootstrap and diagnostic guidance, and searchable help pages for the complete public API.</p>
+<p>The package website is generated with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>. It provides a guided introduction, an end-to-end analysis workflow with bootstrap and diagnostic guidance, and searchable help pages for the complete public API.</p>
 </div>
 <div class="section level2">
 <h2 id="public-api">Public API<a class="anchor" aria-label="anchor" href="#public-api"></a>
@@ -120,7 +119,9 @@
 <div class="section level2">
 <h2 id="reference-paper">Reference Paper<a class="anchor" aria-label="anchor" href="#reference-paper"></a>
 </h2>
-<p>Rana J, Keil AP, Chen H, Chen C, Hatzopoulou M, Zalzal J, Benmarhnia T, Kaufman JS. Joint Causal Effects of Time-Varying Traffic-Related Air Pollution Mixtures on Nonaccidental Mortality and Environmental Justice Implications: A Population-Based Cohort Study in Toronto, Canada.</p>
+<blockquote>
+<p>Rana, J., Keil, A. P., Chen, H., Chen, C., Hatzopoulou, M., Zalzal, J., Benmarhnia, T., &amp; Kaufman, J. S. (2026). <em>Joint causal effects of time-varying traffic-related air pollution mixtures on nonaccidental mortality and environmental justice implications: A population-based cohort study in Toronto, Canada</em> [Under Review].</p>
+</blockquote>
 </div>
 <div class="section level2">
 <h2 id="intended-scope">Intended Scope<a class="anchor" aria-label="anchor" href="#intended-scope"></a>
@@ -141,8 +142,8 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://JuwelRana19.github.io/tvcQGComp">tvcQGComp</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"sim_data"</span>, package <span class="op">=</span> <span class="st">"tvcQGComp"</span><span class="op">)</span></span>
-<span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="va">sim_data</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"toy_data"</span>, package <span class="op">=</span> <span class="st">"tvcQGComp"</span><span class="op">)</span></span>
+<span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="va">toy_data</span></span>
 <span><span class="va">dat</span><span class="op">$</span><span class="va">TimeOut</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">TimeOut</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">exposures</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"BC"</span>, <span class="st">"NIT"</span>, <span class="st">"SO4"</span>, <span class="st">"NH4"</span>, <span class="st">"OM"</span><span class="op">)</span></span>
@@ -214,7 +215,8 @@
 <span><span class="fu"><a href="reference/plot_cumulative_risk_trajectory.html">plot_cumulative_risk_trajectory</a></span><span class="op">(</span></span>
 <span>  <span class="va">fit</span>,</span>
 <span>  include_natural <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  include_average <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  include_average <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  legend_pos <span class="op">=</span> <span class="st">"topleft"</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Draw survival curves only when they are needed.</span></span>
@@ -233,12 +235,12 @@
 <span>  intervention_scenarios <span class="op">=</span> <span class="va">scenarios</span>,</span>
 <span>  seed <span class="op">=</span> <span class="fl">1234</span>,</span>
 <span>  parallel <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  n_workers <span class="op">=</span> <span class="fl">4</span>,</span>
-<span>  batch_size <span class="op">=</span> <span class="fl">4</span></span>
+<span>  n_workers <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  batch_size <span class="op">=</span> <span class="fl">1</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="reference/bootstrap_tvcqgcomp.html">summarize_tvcqgcomp_bootstrap</a></span><span class="op">(</span><span class="va">boot</span><span class="op">)</span></span></code></pre></div>
-<p>The complete, explicitly specified implementation is installed at <code>system.file("examples", "simulated-survival-analysis.R", package = "tvcQGComp")</code>. It includes the outcome model, all time-varying covariate models, HR/RR/RD meta-models, parallel bootstrap settings, and code that combines non-bootstrap point estimates with bootstrap percentile confidence intervals. The bundled dataset contains 5,584 person-period records from 500 simulated individuals followed for 1 to 13 years. Exactly 100 participants die during follow-up, giving 20% cumulative mortality. Its five exposures are continuous and are quantized internally by the package. Lagged variables are deliberately absent because <code>auto_history = TRUE</code> creates them during preparation. It contains no real participant data. The same data are also available as an RDS file at <code>system.file("extdata", "sim_data_500.RDS", package = "tvcQGComp")</code>.</p>
+<p>The complete, explicitly specified implementation is installed at <code>system.file("examples", "simulated-survival-analysis.R", package = "tvcQGComp")</code>. It includes the outcome model, all time-varying covariate models, HR/RR/RD meta-models, parallel bootstrap settings, and code that combines non-bootstrap point estimates with bootstrap percentile confidence intervals. The bundled <code>toy_data</code> dataset contains 5,584 person-period records from 500 simulated individuals followed for 1 to 13 years. Exactly 100 participants die during follow-up, giving 20% cumulative mortality. Its five exposures are continuous and are quantized internally by the package. Lagged variables are deliberately absent because <code>auto_history = TRUE</code> creates them during preparation. It contains no real participant data. The same data are also available as an RDS file at <code>system.file("extdata", "toy_data_500.RDS", package = "tvcQGComp")</code>.</p>
 </div>
 <div class="section level2">
 <h2 id="status">Status<a class="anchor" aria-label="anchor" href="#status"></a>
