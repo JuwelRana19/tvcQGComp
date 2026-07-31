@@ -45,15 +45,15 @@ if (is.na(batch_size) || batch_size < 1L) {
   stop("batch_size must be a positive integer.")
 }
 
-output_dir <- file.path("tvcQGComp_sim_data_analysis", "detailed_results")
+output_dir <- file.path("tvcQGComp_toy_data_analysis", "detailed_results")
 dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
 
 # ---------------------------------------------------------------------------
 # 2. Load and verify the example data
 # ---------------------------------------------------------------------------
 
-data("sim_data", package = "tvcQGComp")
-dat <- sim_data
+data("toy_data", package = "tvcQGComp")
+dat <- toy_data
 
 # TimeOut is stored as a factor in the source dataset. The models use numeric
 # linear and quadratic time terms.

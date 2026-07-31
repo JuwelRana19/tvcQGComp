@@ -1,12 +1,12 @@
-\name{sim_data}
-\alias{sim_data}
+\name{toy_data}
+\alias{toy_data}
 \docType{data}
-\title{Simulated Longitudinal Survival Data}
+\title{Toy Longitudinal Survival Data}
 \description{
-A simulated person-period dataset for demonstrating time-varying quantile
+A toy person-period dataset for demonstrating time-varying quantile
 g-computation with a five-component exposure mixture.
 }
-\usage{data(sim_data)}
+\usage{data(toy_data)}
 \format{
 A \code{data.frame} with 5,584 rows and 28 variables:
 \describe{
@@ -22,7 +22,7 @@ A \code{data.frame} with 5,584 rows and 28 variables:
   \code{Occupation}, \code{employment}, \code{Education}}{
   Simulated demographic and socioeconomic covariates.}
   \item{\code{age}, \code{income_inadequacy}}{
-  Covariates that vary over follow-up in this simulated dataset.}
+  Covariates that vary over follow-up in this toy dataset.}
   \item{\code{CanadianRegion}, \code{Urban_form}, \code{CSize},
   \code{dependency}, \code{deprivation}, \code{ethnicconcentration},
   \code{instability}}{Time-varying categorical covariates.}
@@ -37,7 +37,7 @@ continuous in the public dataset and are converted to quartiles internally
 by \code{tvcQGComp_survival()}. Precomputed lag columns are intentionally
 omitted; set \code{auto_history = TRUE} in the configuration to generate
 required lag histories. An RDS copy is installed at
-\code{system.file("extdata", "sim_data_500.RDS", package = "tvcQGComp")}.
+\code{system.file("extdata", "toy_data_500.RDS", package = "tvcQGComp")}.
 }
 \source{
 Simulated for the tvcQGComp methods project.

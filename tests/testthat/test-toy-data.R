@@ -1,15 +1,15 @@
-test_that("bundled simulation data use continuous exposures without lag columns", {
-  data("sim_data", package = "tvcQGComp")
+test_that("bundled toy data use continuous exposures without lag columns", {
+  data("toy_data", package = "tvcQGComp")
   exposures <- c("BC", "NIT", "SO4", "NH4", "OM")
 
-  expect_equal(nrow(sim_data), 5584L)
-  expect_equal(ncol(sim_data), 28L)
-  expect_equal(length(unique(sim_data$UniqID)), 500L)
-  expect_equal(sum(sim_data$status), 100)
-  expect_false(any(grepl("_lag[0-9]+$", names(sim_data))))
+  expect_equal(nrow(toy_data), 5584L)
+  expect_equal(ncol(toy_data), 28L)
+  expect_equal(length(unique(toy_data$UniqID)), 500L)
+  expect_equal(sum(toy_data$status), 100)
+  expect_false(any(grepl("_lag[0-9]+$", names(toy_data))))
 
   for (exposure in exposures) {
-    values <- sim_data[[exposure]]
+    values <- toy_data[[exposure]]
     expect_true(is.numeric(values))
     expect_true(all(is.finite(values)))
     expect_gt(length(unique(values)), 100L)

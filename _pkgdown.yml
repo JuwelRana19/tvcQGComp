@@ -36,7 +36,7 @@ reference:
       - validate_tvcqgcomp_data
       - generate_intervention_scenarios
       - make_q_scenarios
-      - sim_data
+      - toy_data
 
   - title: Estimate effects
     desc: Fit the main survival analysis and obtain bootstrap uncertainty.
@@ -65,4 +65,3 @@ articles:
     navbar: Guides
     contents:
       - tvcQGComp
-      - bootstrap-and-diagnostics

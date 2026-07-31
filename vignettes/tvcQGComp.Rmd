@@ -1,19 +1,28 @@
 ---
-title: "Get started with tvcQGComp"
+title: "Complete tvcQGComp analysis workflow"
 author: "Juwel Rana"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Get started with tvcQGComp}
+  %\VignetteIndexEntry{Complete tvcQGComp analysis workflow}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
 ```{r setup, include=FALSE}
+render_outputs <- identical(
+  tolower(Sys.getenv("TVCQGCOMP_RENDER_OUTPUTS", unset = "false")),
+  "true"
+)
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  eval = FALSE
+  eval = render_outputs,
+  message = FALSE,
+  warning = FALSE,
+  fig.width = 7,
+  fig.height = 5
 )
+options(width = 90)
 ```
 
 ## Overview
@@ -26,7 +35,9 @@ quantized time-varying exposure mixture. The core workflow is:
 3. validate the data against that configuration;
 4. generate quantized intervention scenarios;
 5. run Monte Carlo g-computation; and
-6. use a subject-level bootstrap for confidence intervals.
+6. interpret the point estimates and risk trajectories;
+7. inspect run-level and natural-course diagnostics; and
+8. use a subject-level bootstrap for confidence intervals.
 
 This public release focuses on main-effect survival analyses with quantized
 exposures.
@@ -52,14 +63,17 @@ not need to be stored in the input when `auto_history = TRUE`.
 
 ## Configure the analysis
 
-The package includes the complete simulated dataset used in this example.
+The package includes the complete `toy_data` dataset used in this example.
 
 ```{r configure}
 library(tvcQGComp)
 
-data("sim_data", package = "tvcQGComp")
-dat <- sim_data
+data("toy_data", package = "tvcQGComp")
+dat <- toy_data
 dat$TimeOut <- as.integer(as.character(dat$TimeOut))
+
+dim(dat)
+head(dat[c("UniqID", "TimeInn", "TimeOut", "status", "BC", "NIT")])
 
 exposures <- c("BC", "NIT", "SO4", "NH4", "OM")
 active_tvc <- c(
@@ -83,6 +97,17 @@ tvc_formulas <- setNames(lapply(active_tvc, function(response) {
   )
 }), active_tvc)
 
+exposure_lag_terms <- paste0(exposures, "_lag1")
+exposure_formulas <- setNames(lapply(exposures, function(response) {
+  reformulate(
+    c(
+      "TimeOut", "I(TimeOut^2)", baseline, active_tvc,
+      exposure_lag_terms
+    ),
+    response = response
+  )
+}), exposures)
+
 cfg <- make_tvcqgcomp_config(
   id = "UniqID",
   time_in = "TimeInn",
@@ -97,25 +122,28 @@ cfg <- make_tvcqgcomp_config(
     response = "status"
   ),
   tvc_formulas = tvc_formulas,
+  exposure_formulas = exposure_formulas,
+  exposure_types = setNames(rep("categorical", length(exposures)), exposures),
   covtypes = c(
     setNames(rep("categorical", length(active_tvc)), active_tvc)
   ),
   q = 4,
   exposome = "quantized",
-  natural_course = "calibration",
+  natural_course = c("calibration", "modeled_exposome"),
   auto_history = TRUE,
   baselags = TRUE,
   meta_target = c("HR", "RR", "RD")
 )
 
-validate_tvcqgcomp_data(dat, cfg)
+data_valid <- validate_tvcqgcomp_data(dat, cfg)
+data_valid
 ```
 
 The configuration is the analysis contract. It should be finalized before
 fitting the point estimate or bootstrap so both stages use identical models and
-interventions. In this simple example, `age` and `income_inadequacy` are used
-as baseline/time-fixed adjustment variables, while the seven neighborhood and
-urban-form covariates are simulated forward as active time-varying covariates.
+interventions. In this example, the seven neighborhood and urban-form
+covariates and the five quantized exposures are modeled forward for the natural
+course.
 
 ## Define interventions
 
@@ -133,14 +161,21 @@ result tables and plots.
 
 ## Fit the point estimate
 
+The website executes this demonstration with a deliberately small Monte Carlo
+sample so each code block can be followed by its actual output. Increase
+`mc_size` substantially for the final analysis; the detailed implementation
+uses 10,000.
+
 ```{r fit}
+demo_mc_size <- 500L
+
 fit <- tvcQGComp_survival(
   data = dat,
   config = cfg,
-  mc_size = 10000,
+  mc_size = demo_mc_size,
   intervention_scenarios = scenarios,
   seed = 1234,
-  verbose = TRUE
+  verbose = FALSE
 )
 
 fit$risk_trajectory
@@ -150,6 +185,13 @@ fit$meta_effect_summary
 The returned object contains fitted nuisance models, simulated intervention
 data, risk summaries, natural-course outputs when requested, and the pooled
 second-stage model.
+
+`fit$meta_effect_summary` is the main point-estimate table, with one row for
+each requested target. HR and RR estimates are reported on the ratio scale;
+RD estimates are reported on the absolute risk-difference scale. Each estimate
+represents a one-unit increase in the joint quantile intervention across all
+mixture components. These are the non-bootstrap estimates; percentile
+confidence intervals are added using the bootstrap later in this workflow.
 
 ## Inspect risk trajectories
 
@@ -164,8 +206,96 @@ Risk trajectories are useful for understanding when scenarios begin to
 separate. Final HR, RR, and RD estimates come from their configured
 second-stage meta-models.
 
-## Next steps
+## Check the fitted run
 
-Use the bootstrap for confidence intervals and inspect diagnostics before
-reporting results. See the
-[bootstrap and diagnostics](bootstrap-and-diagnostics.html) guide.
+Before interpreting the effect estimates, check the structure and numerical
+behavior of the fitted run.
+
+```{r run-diagnostics}
+run_checks <- diagnose_tvcqgcomp_run(fit)
+run_checks$summary
+run_checks$scenario_exposure_checks
+run_checks$final_risk_table
+```
+
+Review warnings, missing outputs, scenario completeness, Monte Carlo panel
+balance, exposure constancy under static interventions, and numerical
+irregularities. Resolve substantive problems before proceeding to inference.
+
+## Check natural-course drift
+
+The natural-course simulation should reproduce the observed trajectories of
+the modeled time-varying covariates reasonably well. Because the configuration
+requested `modeled_exposome`, `fit$natural` contains forward-simulated
+time-varying covariates and exposures. Supply the observed data as the
+comparison target; the fitted object supplies the natural-course simulation
+and configuration.
+
+```{r drift-diagnostics}
+drift <- diagnose_tvcqgcomp_drift(
+  observed_data = dat,
+  run_obj = fit
+)
+
+drift$categorical_summary
+drift$continuous_summary
+
+plot_tvcqgcomp_drift(
+  drift_obj = drift,
+  continuous_stat = "mean",
+  categorical_stat = "level_proportion",
+  main = "Observed versus simulated natural course"
+)
+```
+
+For categorical variables, the summary reports differences in time-specific
+level proportions. For continuous variables, it reports differences in means,
+standard deviations, and selected quantiles. Material drift can indicate model
+misspecification, unsupported simulated histories, incorrect variable types,
+or unstable extrapolation. These diagnostics should guide model revision; they
+do not replace the causal assumptions required for identification.
+
+## Bootstrap uncertainty
+
+Use the same data, configuration, and intervention scenarios as the point
+estimate. Resampling is performed at the subject level to preserve each
+participant's longitudinal history.
+
+The website uses five replicates only to demonstrate the returned output. This
+is not sufficient for inference; use a substantially larger number, such as
+500, for the final analysis.
+
+```{r bootstrap}
+demo_n_boot <- 5L
+
+boot <- tvcQGComp_survival_boot(
+  data = dat,
+  config = cfg,
+  n_boot = demo_n_boot,
+  mc_size = demo_mc_size,
+  intervention_scenarios = scenarios,
+  seed = 1234,
+  parallel = FALSE,
+  checkpoint_file = NULL,
+  verbose = FALSE,
+  stop_on_error = FALSE
+)
+
+boot_summary <- summarize_tvcqgcomp_bootstrap(boot)
+boot_summary
+```
+
+Use a small number of replicates only when testing the pipeline. The final
+analysis should use enough successful replicates to estimate percentile limits
+with adequate stability. Store checkpoint files outside the package source
+directory when preparing a public release.
+
+## Suggested reporting checklist
+
+- Define the longitudinal time scale and event indicator.
+- List all mixture components and quantization levels.
+- Describe the natural-course mode and intervention scenarios.
+- State each requested second-stage meta-model target.
+- Report the Monte Carlo size, bootstrap settings, and random seeds.
+- Report the requested and successful numbers of bootstrap replicates.
+- Summarize run-level checks, natural-course drift, and any model revisions.

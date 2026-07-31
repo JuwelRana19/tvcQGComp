@@ -47,8 +47,8 @@ pak::pak("JuwelRana19/tvcQGComp")
 
 The package website is generated with
 [pkgdown](https://pkgdown.r-lib.org/). It provides a guided introduction,
-bootstrap and diagnostic guidance, and searchable help pages for the complete
-public API.
+an end-to-end analysis workflow with bootstrap and diagnostic guidance, and
+searchable help pages for the complete public API.
 
 ## Public API
 
@@ -90,8 +90,8 @@ raw contrasts, or population-impact summaries.
 ```r
 library(tvcQGComp)
 
-data("sim_data", package = "tvcQGComp")
-dat <- sim_data
+data("toy_data", package = "tvcQGComp")
+dat <- toy_data
 dat$TimeOut <- as.integer(as.character(dat$TimeOut))
 
 exposures <- c("BC", "NIT", "SO4", "NH4", "OM")
@@ -195,13 +195,13 @@ The complete, explicitly specified implementation is installed at
 It includes the outcome model, all time-varying covariate models, HR/RR/RD
 meta-models, parallel bootstrap settings, and code that combines
 non-bootstrap point estimates with bootstrap percentile confidence intervals.
-The bundled dataset contains 5,584 person-period records from 500 simulated
+The bundled `toy_data` dataset contains 5,584 person-period records from 500 simulated
 individuals followed for 1 to 13 years. Exactly 100 participants die during
 follow-up, giving 20% cumulative mortality. Its five exposures are continuous
 and are quantized internally by the package. Lagged variables are deliberately
 absent because `auto_history = TRUE` creates them during preparation. It
 contains no real participant data. The same data are also available as an RDS file at
-`system.file("extdata", "sim_data_500.RDS", package = "tvcQGComp")`.
+`system.file("extdata", "toy_data_500.RDS", package = "tvcQGComp")`.
 
 ## Status
 
