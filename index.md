@@ -85,8 +85,8 @@ API.
 
 ## Intended Scope
 
-This release is intended for time-varying quantile g-computation
-workflows where the main user-facing tasks are:
+This release is intended for time-varying q-gcomp workflows where the
+main user-facing tasks are:
 
 1.  build a configuration object
 2.  generate quantized intervention scenarios
@@ -100,7 +100,7 @@ development-package helpers for raw lookup interventions, effect-measure
 modification, subgroup-specific raw contrasts, or population-impact
 summaries.
 
-## Basic Example
+## Minimal Example
 
 ``` r
 
