@@ -163,7 +163,8 @@ print(fit, prediction = "trajectory")
 plot_cumulative_risk_trajectory(
   fit,
   include_natural = FALSE,
-  include_average = TRUE
+  include_average = TRUE,
+  legend_pos = "topleft"
 )
 
 # Draw survival curves only when they are needed.
