@@ -32,8 +32,6 @@ workflows, including
 - pooled person-time or final-risk meta models
 - cluster bootstrap confidence intervals
 
-The implementation supports survival outcomes.
-
 ## Installation
 
 Install the development version from GitHub with either `remotes` or
@@ -53,8 +51,8 @@ pak::pak("JuwelRana19/tvcQGComp")
 
 ## Documentation
 
-The package website is generated with
-[pkgdown](https://pkgdown.r-lib.org/). It provides a guided
+The [package website](https://juwelrana.com/tvcQGComp/) is generated
+with [pkgdown](https://pkgdown.r-lib.org/). It provides a guided
 introduction, an end-to-end analysis workflow with bootstrap and
 diagnostic guidance, and searchable help pages for the complete public
 API.
@@ -87,8 +85,8 @@ API.
 
 ## Intended Scope
 
-This release is intended for time-varying q-gcomp workflows where the
-main user-facing tasks are:
+This release is intended for time-varying quantile g-computation
+workflows where the main user-facing tasks are:
 
 1.  build a configuration object
 2.  generate quantized intervention scenarios
@@ -97,11 +95,12 @@ main user-facing tasks are:
 5.  inspect trajectories and drift diagnostics
 
 Version 0.0.0 is limited to quantized static scenarios and HR/RR/RD
-main-effect meta-models. It does not include the development-package
-helpers for raw lookup interventions, effect-measure modification,
-subgroup-specific raw contrasts, or population-impact summaries.
+main-effect meta-models. Future updates will include the
+development-package helpers for raw lookup interventions, effect-measure
+modification, subgroup-specific raw contrasts, or population-impact
+summaries.
 
-## Minimal Example
+## Basic Example
 
 ``` r
 
