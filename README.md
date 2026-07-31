@@ -183,8 +183,8 @@ boot <- tvcQGComp_survival_boot(
   intervention_scenarios = scenarios,
   seed = 1234,
   parallel = TRUE,
-  n_workers = 4,
-  batch_size = 4
+  n_workers = 1,
+  batch_size = 1
 )
 
 summarize_tvcqgcomp_bootstrap(boot)
