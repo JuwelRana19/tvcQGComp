@@ -18,7 +18,9 @@ Authors: Juwel Rana and Alexander Keil
 
 </div>
 
-`tvcQGComp` provides time-varying quantile g-computation workflows, including:
+## Description
+
+The main purpose of the `tvcQGComp` R-Package is to estimate joint causal effects of time-varying exposure mixtures on survival or binary outcomes. `tvcQGComp` includes:
 
 - Monte Carlo skeleton generation
 - automatic lag-history creation
