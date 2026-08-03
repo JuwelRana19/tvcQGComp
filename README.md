@@ -1,4 +1,4 @@
-# tvcQGComp
+# tvcQGComp: An R Package for Estimating Causal Effects of Time-Varying Environmental Mixtures
 
 <img src="man/figures/logo.png" align="right" width="180" alt="tvcQGComp logo" class="readme-logo" />
 
