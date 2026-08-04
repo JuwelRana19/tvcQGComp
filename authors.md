@@ -9,7 +9,7 @@
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/JuwelRana19/tvcQGComp/blob/main/inst/CITATION)
+[`inst/CITATION`](https://github.com/JuwelRana19/tvcQGComp/blob/v0.0.1/inst/CITATION)
 
 Rana J, Keil A, Chen H, Chen C, Hatzopoulou M, Zalzal J, Benmarhnia T,
 Kaufman J (2026). “Joint Causal Effects of Time-Varying Traffic-Related
