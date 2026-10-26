@@ -19,7 +19,7 @@ plot(x, ...)
 - ...:
 
   Arguments passed to
-  [`plot_cumulative_risk_trajectory()`](https://JuwelRana19.github.io/tvcQGComp/reference/plot_cumulative_risk_trajectory.md).
+  [`plot_cumulative_risk_trajectory()`](https://juwelrana.com/tvcQGComp/reference/plot_cumulative_risk_trajectory.md).
 
 ## Details
 

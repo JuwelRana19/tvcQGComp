@@ -53,7 +53,7 @@ years. Exactly 100 participants die during follow-up, corresponding to
 testing and contains no real participant records. The exposure variables
 remain continuous in the public dataset and are converted to quartiles
 internally by
-[`tvcQGComp_survival()`](https://JuwelRana19.github.io/tvcQGComp/reference/run_tvcqgcomp.md).
+[`tvcQGComp_survival()`](https://juwelrana.com/tvcQGComp/reference/run_tvcqgcomp.md).
 Precomputed lag columns are intentionally omitted; set
 `auto_history = TRUE` in the configuration to generate required lag
 histories. An RDS copy is installed at

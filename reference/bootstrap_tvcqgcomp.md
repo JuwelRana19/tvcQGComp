@@ -50,7 +50,7 @@ summarize_tvcqgcomp_bootstrap(boot_res)
   joint_effect_fn:
 
   See
-  [`tvcQGComp_survival()`](https://JuwelRana19.github.io/tvcQGComp/reference/run_tvcqgcomp.md).
+  [`tvcQGComp_survival()`](https://juwelrana.com/tvcQGComp/reference/run_tvcqgcomp.md).
   When multiple meta targets are requested, bootstrap result columns are
   prefixed by target, for example `coef_HR_joint_effect`,
   `coef_HD_joint_effect`, and `coef_RR_joint_effect`. When

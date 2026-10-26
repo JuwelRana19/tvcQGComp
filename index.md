@@ -59,21 +59,21 @@ API.
 
 ## Public API
 
-- [`make_tvcqgcomp_config()`](https://JuwelRana19.github.io/tvcQGComp/reference/make_tvcqgcomp_config.md)
-- [`validate_tvcqgcomp_data()`](https://JuwelRana19.github.io/tvcQGComp/reference/make_tvcqgcomp_config.md)
-- [`generate_intervention_scenarios()`](https://JuwelRana19.github.io/tvcQGComp/reference/make_tvcqgcomp_config.md)
-- [`make_q_scenarios()`](https://JuwelRana19.github.io/tvcQGComp/reference/make_tvcqgcomp_config.md)
-- [`tvcQGComp_survival()`](https://JuwelRana19.github.io/tvcQGComp/reference/run_tvcqgcomp.md)
-- [`tvcQGComp_survival_boot()`](https://JuwelRana19.github.io/tvcQGComp/reference/bootstrap_tvcqgcomp.md)
-- [`summarize_tvcqgcomp_bootstrap()`](https://JuwelRana19.github.io/tvcQGComp/reference/bootstrap_tvcqgcomp.md)
-- [`as_risk_curve_df()`](https://JuwelRana19.github.io/tvcQGComp/reference/as_risk_curve_df.md)
-- [`plot_cumulative_risk_trajectory()`](https://JuwelRana19.github.io/tvcQGComp/reference/plot_cumulative_risk_trajectory.md)
+- [`make_tvcqgcomp_config()`](https://juwelrana.com/tvcQGComp/reference/make_tvcqgcomp_config.md)
+- [`validate_tvcqgcomp_data()`](https://juwelrana.com/tvcQGComp/reference/make_tvcqgcomp_config.md)
+- [`generate_intervention_scenarios()`](https://juwelrana.com/tvcQGComp/reference/make_tvcqgcomp_config.md)
+- [`make_q_scenarios()`](https://juwelrana.com/tvcQGComp/reference/make_tvcqgcomp_config.md)
+- [`tvcQGComp_survival()`](https://juwelrana.com/tvcQGComp/reference/run_tvcqgcomp.md)
+- [`tvcQGComp_survival_boot()`](https://juwelrana.com/tvcQGComp/reference/bootstrap_tvcqgcomp.md)
+- [`summarize_tvcqgcomp_bootstrap()`](https://juwelrana.com/tvcQGComp/reference/bootstrap_tvcqgcomp.md)
+- [`as_risk_curve_df()`](https://juwelrana.com/tvcQGComp/reference/as_risk_curve_df.md)
+- [`plot_cumulative_risk_trajectory()`](https://juwelrana.com/tvcQGComp/reference/plot_cumulative_risk_trajectory.md)
   for the primary cumulative-incidence plot
-- [`plot_survival_trajectory()`](https://JuwelRana19.github.io/tvcQGComp/reference/plot_survival_trajectory.md)
+- [`plot_survival_trajectory()`](https://juwelrana.com/tvcQGComp/reference/plot_survival_trajectory.md)
   for an optional survival plot
-- [`diagnose_tvcqgcomp_run()`](https://JuwelRana19.github.io/tvcQGComp/reference/diagnose_tvcqgcomp_run.md)
-- [`diagnose_tvcqgcomp_drift()`](https://JuwelRana19.github.io/tvcQGComp/reference/diagnose_tvcqgcomp_drift.md)
-- [`plot_tvcqgcomp_drift()`](https://JuwelRana19.github.io/tvcQGComp/reference/plot_tvcqgcomp_drift.md)
+- [`diagnose_tvcqgcomp_run()`](https://juwelrana.com/tvcQGComp/reference/diagnose_tvcqgcomp_run.md)
+- [`diagnose_tvcqgcomp_drift()`](https://juwelrana.com/tvcQGComp/reference/diagnose_tvcqgcomp_drift.md)
+- [`plot_tvcqgcomp_drift()`](https://juwelrana.com/tvcQGComp/reference/plot_tvcqgcomp_drift.md)
 
 ## Reference Paper
 

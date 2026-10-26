@@ -27,7 +27,7 @@ diagnose_tvcqgcomp_drift(observed_data = NULL, natural = NULL, run_obj = NULL,
 - run_obj:
 
   Optional object returned by
-  [`tvcQGComp_survival()`](https://JuwelRana19.github.io/tvcQGComp/reference/run_tvcqgcomp.md).
+  [`tvcQGComp_survival()`](https://juwelrana.com/tvcQGComp/reference/run_tvcqgcomp.md).
   When supplied, `config`, `observed_data`, and `natural` are filled
   from the run object when available.
 

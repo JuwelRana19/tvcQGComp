@@ -17,7 +17,7 @@ diagnose_tvcqgcomp_run(run_obj, config = NULL, tolerance = 1e-12)
 - run_obj:
 
   Object returned by
-  [`tvcQGComp_survival()`](https://JuwelRana19.github.io/tvcQGComp/reference/run_tvcqgcomp.md).
+  [`tvcQGComp_survival()`](https://juwelrana.com/tvcQGComp/reference/run_tvcqgcomp.md).
 
 - config:
 

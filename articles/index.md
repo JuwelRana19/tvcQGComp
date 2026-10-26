@@ -3,4 +3,4 @@
 ### Guides
 
 - [Complete tvcQGComp analysis
-  workflow](https://JuwelRana19.github.io/tvcQGComp/articles/tvcQGComp.md):
+  workflow](https://juwelrana.com/tvcQGComp/articles/tvcQGComp.md):

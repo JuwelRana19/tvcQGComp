@@ -26,7 +26,7 @@ plot_tvcqgcomp_drift(drift_obj = NULL, observed_data = NULL, natural = NULL,
 - drift_obj:
 
   Optional object returned by
-  [`diagnose_tvcqgcomp_drift()`](https://JuwelRana19.github.io/tvcQGComp/reference/diagnose_tvcqgcomp_drift.md).
+  [`diagnose_tvcqgcomp_drift()`](https://juwelrana.com/tvcQGComp/reference/diagnose_tvcqgcomp_drift.md).
 
 - observed_data:
 
@@ -39,7 +39,7 @@ plot_tvcqgcomp_drift(drift_obj = NULL, observed_data = NULL, natural = NULL,
 - run_obj:
 
   Optional object returned by
-  [`tvcQGComp_survival()`](https://JuwelRana19.github.io/tvcQGComp/reference/run_tvcqgcomp.md).
+  [`tvcQGComp_survival()`](https://juwelrana.com/tvcQGComp/reference/run_tvcqgcomp.md).
   Used when `drift_obj` is not supplied.
 
 - config:
